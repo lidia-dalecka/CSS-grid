@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Using CSS Grid</title>
     <style>
-        body{
-            color:#fff;
+        body {
+            color: #fff;
             font-family: 'Nunito Semibold';
             text-align: center;
         }
-        #content{
+
+        #content {
+            /*default for PC*/
             grid-template-columns: repeat(4, 1fr);
             grid-auto-rows: minmax(100px, auto);
             display: grid;
             max-width: 960px;
             margin: 0 auto;
             grid-gap: 10px;
-            grid-template-areas: 
-            "header header header header"
-            "aside . main main"
-            "nav . main main"
-            "section section section section"
-            "section section section section"
-            "footer footer footer footer";
+            grid-template-areas:
+                "header header header header"
+                "footer footer footer footer"
+                "main main  main main"
+                "main main main main"
+                "aside aside aside aside"
+                "section section section section"
+                "section section section section";
         }
 
-        #content > *{
+        @media screen and (min-width: 760px) {
+            /*for mobiles*/
+
+            #content {
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: minmax(100px, auto);
+                display: grid;
+                max-width: 960px;
+                margin: 0 auto;
+                grid-gap: 10px;
+                grid-template-areas:
+                    "header header header header"
+                    "aside aside main main"
+                    "nav nav main main"
+                    "section section section section"
+                    "section section section section"
+                    "footer footer footer footer";
+            }
+        }
+
+        #content>* {
             background: #3bbced;
             padding: 30px;
         }
-        header{
+
+        header {
             grid-area: header;
         }
-        main{
+
+        main {
             grid-area: main;
         }
-        section{
+
+        section {
             grid-area: section;
         }
-        aside{
+
+        aside {
             grid-area: aside;
         }
-        nav{
+
+        nav {
             grid-area: nav;
         }
-        footer{
+
+        footer {
             grid-area: footer;
         }
-
     </style>
 </head>
+
 <body>
 
     <div id="content">
@@ -64,6 +94,7 @@
         <footer>Footer</footer>
 
     </div>
-    
+
 </body>
+
 </html>
